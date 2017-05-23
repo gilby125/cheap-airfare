@@ -12,8 +12,9 @@ from multiprocessing import Pool
 
 def scraper(day):
 	url = urlA + str(day) + urlB
-	#browser = webdriver.Chrome()		# for debugging - opens a browser window
-	browser = webdriver.PhantomJS()		# to run the real thing (browser windows don't open)
+	print('Opening browser window...')
+	browser = webdriver.Chrome()		# for debugging - opens a browser window
+	#browser = webdriver.PhantomJS()		# to run the real thing (browser windows don't open)
 	browser.get(url)
 	print("Loading website and waiting...")
 	time.sleep(40)
@@ -113,10 +114,11 @@ def flight_selector(arr):
 if __name__ == "__main__":
 	p = Pool(processes=9)
 	data = p.map(scraper, [20, 21, 22, 23, 24, 25, 26, 27, 28])
+	#scraper(20)
 	print('*********Good Flights************')
 	#print(data)
 	#print('*********************************')
-	p.close()
+	#p.close()
 
 
 
